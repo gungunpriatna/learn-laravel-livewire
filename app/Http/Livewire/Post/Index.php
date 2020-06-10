@@ -16,4 +16,18 @@ class Index extends Component
             'posts' => Post::latest()->paginate(5)
         ]);
     }
+
+    public function destroy($postId)
+    {
+        $post = Post::find($postId);
+
+        if ($post) {
+            $post->delete();
+            # code...
+        }
+
+        session()->flash('message', 'Data berhasil dihapus');
+
+        return redirect()->route('post.index');
+    }
 }
