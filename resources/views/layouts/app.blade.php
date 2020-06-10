@@ -13,9 +13,19 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
 
+                @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+
+                @endif
+
+                @yield('content')
             </div>
         </div>
     </div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
 
 </body>
 </html>
